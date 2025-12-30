@@ -1,10 +1,56 @@
+#![doc = include_str!("../README.md")]
+
 use sha1::{Digest, Sha1};
 use std::fs::File;
 use std::io::{BufReader, Read};
 use std::path::{Path, PathBuf};
 
 pub trait Hashable {
+    /// Computes and returns the hash of the current object's data as a `String`.
+    ///
+    /// # Returns
+    /// - `Ok(String)`: A `String` representation of the computed hash if the operation is successful.
+    /// - `Err(SHAError)`: An error of type `SHAError` if the hashing process fails.
+    ///
+    /// # Errors
+    /// This function will return a `SHAError` if there is an issue during the hashing process,
+    /// such as invalid input or internal computation errors.
+    ///
+    /// # Examples
+    /// ```rust
+    /// let data = MyStruct::new("example data");
+    /// match data.hash() {
+    ///     Ok(hash) => println!("Hash: {}", hash),
+    ///     Err(e) => println!("Error occurred: {:?}", e),
+    /// }
+    /// ```
     fn hash(&self) -> Result<String, SHAError>;
+    ///
+    /// Validates the given hash against some internal criteria or expected value.
+    ///
+    /// # Parameters
+    /// - `hash`: An object that can be converted to a string slice (`&str`). This represents
+    ///           the hash value to be validated.
+    ///
+    /// # Returns
+    /// - `Ok(true)`: Indicates that the hash is valid and meets the criteria.
+    /// - `Ok(false)`: Indicates that the hash is invalid or doesn't meet the criteria.
+    /// - `Err(SHAError)`: An error occurred during the validation process, encapsulated in a `SHAError`.
+    ///
+    /// # Errors
+    /// May return a `SHAError` if there is an issue during the validation, such as an invalid
+    /// hash format, or other internal processing errors.
+    ///
+    /// # Example
+    /// ```
+    /// let validator = SomeValidator::new();
+    /// match validator.validate("abc123") {
+    ///     Ok(true) => println!("Hash is valid."),
+    ///     Ok(false) => println!("Hash is invalid."),
+    ///     Err(e) => eprintln!("Validation error: {}", e),
+    /// }
+    /// ```
+    ///
     fn validate(&self, hash: impl AsRef<str>) -> Result<bool, SHAError>;
 }
 
