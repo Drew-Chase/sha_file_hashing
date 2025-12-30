@@ -23,7 +23,7 @@ sha_file_hashing = "0.1.0"
 
 ### Basic File Hashing
 
-```rust
+```rust,no_run
 use sha_file_hashing::Hashable;
 use std::path::Path;
 
@@ -44,7 +44,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ### Using PathBuf
 
-```rust
+```rust,no_run
 use sha_file_hashing::Hashable;
 use std::path::PathBuf;
 
@@ -58,7 +58,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ### Using File Handle
 
-```rust
+```rust,no_run
 use sha_file_hashing::Hashable;
 use std::fs::File;
 
@@ -78,7 +78,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 If you prefer not to use the trait, you can use the functions directly:
 
-```rust
+```rust,no_run
 use sha_file_hashing::{hash_file_from_path, validate_file_from_path};
 use std::path::Path;
 

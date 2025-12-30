@@ -1,6 +1,6 @@
 [package]
 name = "sha_file_hashing"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 authors = ["Drew Chase"]
 description = "A Rust library for computing and validating SHA-1 file hashes with a clean, trait-based API"
@@ -14,3 +14,6 @@ readme = "README.md"
 [dependencies]
 sha1 = "0.11.0-rc.3"
 thiserror = "2.0.17"
+
+[dev-dependencies]
+tempfile = "3.14.0"
