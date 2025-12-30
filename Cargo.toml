@@ -1,0 +1,8 @@
+[package]
+name = "sha_file_hashing"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+sha1 = "0.11.0-rc.3"
+thiserror = "2.0.17"
